@@ -6,6 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "dependencies": {
+    "express": "^4.12.3",
+    "jade": "^1.9.2",
+    "morgan": "^1.5.3",
+    "nib": "^1.1.0",
+    "stylus": "^0.51.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ltongues/basejump-voting-1.git"
