@@ -13,6 +13,10 @@
     "nib": "^1.1.0",
     "stylus": "^0.51.1"
   },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-watch": "^0.6.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ltongues/basejump-voting-1.git"
