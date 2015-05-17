@@ -1,0 +1,17 @@
+{
+  "name": "basejump-voting-1",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ltongues/basejump-voting-1",
+  "authors": [
+    "Alexey Belkov <knots@ya.ru>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components/",
+    "test",
+    "tests"
+  ]
+}
