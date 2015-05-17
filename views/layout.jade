@@ -2,11 +2,11 @@ doctype
 html
   head
     title #{title} - Voteplex
-    link(rel='stylesheet', href='/stylesheets/app.css')
+    include partials/head-links
   body
     include partials/header
-    header
-      h1 My Site
+    //- header
+    //-   h1 My Site
     .container
       .main-content
         block content
