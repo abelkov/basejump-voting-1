@@ -11,7 +11,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 app.use(stylus.middleware({
-    src: __dirname
+    src: __dirname + '/public'
   , compile: compile
 }));
 
@@ -32,7 +32,9 @@ app.use(express.static(__dirname + '/public'));
 /**** Routes ****/
 
 app.get('/', function(req, res) {
-  res.render('home');
+  res.render('index', {
+    title: 'Home'
+  });
 });
 
 // 404 catch-all handler (middleware)
