@@ -8,6 +8,8 @@ var express = require('express')
 var app = express();
 app.use(morgan('dev'));
 
+app.use(require('compression')());
+
 // Jade
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
