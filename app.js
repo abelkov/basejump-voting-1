@@ -2,10 +2,14 @@ var express = require('express')
   , morgan = require('morgan')
   , stylus = require('stylus')
   , nib = require('nib')
-  , path = require('path');
+  , path = require('path')
+  , credentials = require('./credentials.js');
 
 var app = express();
 app.use(morgan('dev'));
+
+app.use(require('cookie-parser')(credentials.cookieSecret));
+app.use(require('express-session')());
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -37,6 +41,14 @@ app.get('/:var(signup|login)', function(req, res) {
   res.render('authorize', {
     path: req.path
   });
+});
+
+app.post('/signup', function(req, res) {
+  res.send('Sign up coming soon!');
+});
+
+app.post('/login', function(req, res) {
+  res.send('Login coming soon!');
 });
 
 // 404 catch-all handler (middleware)
