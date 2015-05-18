@@ -13,7 +13,7 @@ var path = require('path')
 var app = express();
 
 app.get('env') === 'development'
-  ? app.use(morgan('dev'));
+  ? app.use(morgan('dev'))
   : app.use(expressLogger({
       path: __dirname + '/log/requests.log'
     }));
