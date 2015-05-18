@@ -1,22 +1,21 @@
 extend layout
 block content
-  p
-    | Vivamus hendrerit arcu sed erat molestie
-    | vehicula. Sed auctor neque eu tellus
-    | rhoncus ut eleifend nibh porttitor. Ut in.
-  p
-    | Donec congue lacinia dui, a porttitor
-    | lectus condimentum laoreet. Nunc eu
-    | ullamcorper orci. Quisque eget odio ac
-    | lectus vestibulum faucibus eget in metus.
-    | In pellentesque faucibus vestibulum. Nulla
-    | at nulla justo, eget luctus tortor.
-block sidebar
-  .widget
-    h1 Widget
-    p
-      | Sed auctor neque eu tellus rhoncus ut
-      | eleifend nibh porttitor. Ut in nulla enim.
-    p
-      | Vivamus hendrerit arcu sed erat molestie
-      | vehicula.
+  #main
+    include partials/welcome
+    .container.marketing
+      .row
+        .col-md-4.col-xs-12
+          span.fa.fa-bolt
+          h2 Live Results
+          p.
+            Live graphs show your poll results immediately in easy to an easy to understand format. One graph will not provide the whole picture, that's why we provide multiple graph types to better describe your results.
+        .col-md-4.col-xs-12
+          span.fa.fa-globe
+          h2 Works Everywhere
+          p.
+            Traditional desktop computers now represent only 30% of Internet traffic. Your poll must work on the tablets, smart phones, netbooks and notebooks that your visitors are using. Our responsive designs do just that.
+        .col-md-4.col-xs-12
+          span.fa.fa-facebook
+          h2 Social Integration
+          p.
+            Free integrated facebook or traditional comments allow your poll voters to provide immediate feedback and discuss results. Social share buttons encourage your poll voters to help spread the word.
