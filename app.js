@@ -17,10 +17,6 @@ app.use(stylus.middleware({
 
 function compile(str, path) {
   return stylus(str)
-    .define('url', stylus.url({
-      paths : [__dirname + "/public"],
-      limit : 10000
-    }))
     .set('filename', path)
     .set('compress', true)
     .use(nib());
@@ -34,6 +30,12 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res) {
   res.render('index', {
     title: 'Home'
+  });
+});
+
+app.get('/:var(signup|login)', function(req, res) {
+  res.render('authorize', {
+    path: req.path
   });
 });
 
