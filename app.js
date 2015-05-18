@@ -1,14 +1,19 @@
-var express = require('express')
+var path = require('path')
+  , express = require('express')
   , morgan = require('morgan')
+  , bodyParser = require('body-parser')
+  , cookieParser = require('cookie-parser')
+  , expressSession = require('express-session')
+  , compression = require('compression')
   , stylus = require('stylus')
   , nib = require('nib')
-  , path = require('path')
+
   , credentials = require('./credentials.js');
 
 var app = express();
 app.use(morgan('dev'));
 
-app.use(require('compression')());
+app.use(compression());
 
 // Jade
 app.set('views', path.join(__dirname, 'views'));
@@ -30,11 +35,11 @@ function compile(str, path) {
 app.use(express.static(__dirname + '/public'));
 
 // Forms
-app.use(require('body-parser')());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Session
-app.use(require('cookie-parser')(credentials.cookieSecret));
-app.use(require('express-session')());
+app.use(cookieParser(credentials.cookieSecret));
+app.use(expressSession());
 
 // Flash
 app.use(function(req, res, next) {
