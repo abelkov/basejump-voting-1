@@ -8,12 +8,11 @@ var express = require('express')
 var app = express();
 app.use(morgan('dev'));
 
-app.use(require('cookie-parser')(credentials.cookieSecret));
-app.use(require('express-session')());
-
+// Jade
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+// Stylus
 app.use(stylus.middleware({
     src: __dirname + '/public'
   , compile: compile
@@ -28,6 +27,19 @@ function compile(str, path) {
 
 app.use(express.static(__dirname + '/public'));
 
+// Forms
+app.use(require('body-parser')());
+
+// Session
+app.use(require('cookie-parser')(credentials.cookieSecret));
+app.use(require('express-session')());
+
+// Flash
+app.use(function(req, res, next) {
+  res.locals.flash = req.session.flash;
+  delete req.session.flash;
+  next();
+});
 
 /**** Routes ****/
 
@@ -44,7 +56,17 @@ app.get('/:var(signup|login)', function(req, res) {
 });
 
 app.post('/signup', function(req, res) {
-  res.send('Sign up coming soon!');
+  var name = req.body.name
+    , email = req.body.email
+    , password = req.body.password;
+
+  req.session.flash = {
+    type: 'info'
+  , intro: 'Thanks for trying...'
+  , message: 'Sign up coming real soon now!'
+  }
+
+  res.redirect(303, '/');
 });
 
 app.post('/login', function(req, res) {
