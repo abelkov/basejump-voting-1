@@ -11,7 +11,7 @@ module.exports = function(grunt) {
     watch: {
       livereload: {
         options: { livereload: true },
-        files: '**/*'
+        files: ['./*.js', 'views/**/*.jade', 'public/stylesheets/*.styl']
       }
     }
 
