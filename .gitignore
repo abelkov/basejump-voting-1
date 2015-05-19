@@ -2,4 +2,5 @@ public/stylesheets/*.css
 public/bower_components
 node_modules
 credentials.js
-log/*
+log/
+config/env/
