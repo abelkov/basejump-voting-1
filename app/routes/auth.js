@@ -1,5 +1,5 @@
 module.exports = function(app) {
-  var authCtrl = require('../controllers/auth');
+  var authCtrl = require(`${appRoot}/app/controllers/auth.js`);
 
   app.get('/:var(signup|login)', authCtrl.renderAuthorize);
   app.post('/signup', authCtrl.signup);

@@ -1,11 +1,11 @@
 var mongoose = require('mongoose')
-  , config = require('./config');
+  , config = require(`${appRoot}/config/config.js`);
 
 module.exports = function() {
   var db = mongoose.connect(config.db);
 
   // connect all the models
-  // require('../app/models/model.js');
+  // require(`${appRoot}/app/models/model.js`);
 
   return db;
 };

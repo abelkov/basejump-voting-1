@@ -8,7 +8,7 @@ var l = console.log
   , compression = require('compression')
   , stylus = require('stylus')
   , nib = require('nib')
-  , config = require('./config');
+  , config = require(`${appRoot}/config/config.js`);
 
 module.exports = function() {
 
@@ -22,19 +22,19 @@ module.exports = function() {
     app.use(morgan('dev'));
   } else if (process.env.NODE_ENV === 'production') {
     app.use(expressLogger({
-      path: './log/requests.log'
+      path: `${appRoot}/log/requests.log`
     }));
 
     app.use(compression());
   }
 
   // Jade
-  app.set('views', './app/views');
+  app.set('views', `${appRoot}/app/views`);
   app.set('view engine', 'jade');
 
   // Stylus
   app.use(stylus.middleware({
-      src: './public'
+      src: `${appRoot}/public`
     , compile: compile
   }));
 
@@ -63,18 +63,18 @@ module.exports = function() {
   });
 
   // Static
-  app.use(express.static('./public'));
+  app.use(express.static(`${appRoot}/public`));
 
 
   /**** Routes ****/
 
-  require('./app/routes/index')(app);
-  require('./app/routes/auth')(app);
+  require(`${appRoot}/app/routes/index.js`)(app);
+  require(`${appRoot}/app/routes/auth.js`)(app);
 
 
   /**** Error handlers ****/
 
-  var errorCtrl = require('./app/controllers/error');
+  var errorCtrl = require(`${appRoot}/app/controllers/error.js`);
 
   app.use(errorCtrl.notFound);
   app.use(errorCtrl.serverError);
