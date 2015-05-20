@@ -1,5 +1,6 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
+// define `appRoot` as a global variable
 var path = require('path');
 global.appRoot = path.resolve(__dirname);
 
